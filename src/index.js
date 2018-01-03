@@ -1,10 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-// import '../semantic/dist/semantic.min.css';
-import registerServiceWorker from './registerServiceWorker';
-import SZCard from '../src/components/SZCard'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import 'semantic-ui-css/semantic.min.css'
+import registerServiceWorker from './registerServiceWorker'
+import Chart from '../src/components/Chart'
 
-ReactDOM.render(<SZCard />, document.getElementById('root'));
+ReactDOM.render(<Chart />, document.getElementById('root'))
 registerServiceWorker();
