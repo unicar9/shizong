@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Button, Card, Image, Form, Input } from 'semantic-ui-react';
+import React, { Component } from 'react'
+import { Button, Card, Image, Form, Input } from 'semantic-ui-react'
 
 const activityOptions = [
     { text: "Reading", value: "reading" },
@@ -37,7 +37,4 @@ class SZCard extends Component {
     }
 }
 
-
-
-
-export default SZCard;  
+export default SZCard
