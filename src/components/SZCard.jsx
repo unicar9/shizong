@@ -41,7 +41,7 @@ class SZCard extends Component {
         const { value, hour, minute } = this.state
 
         return(
-            <Segment inverted color={this.props.color}>
+            <Segment inverted color='olive'>
                 <Header textAlign="center">Log Your Activity</Header>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Dropdown selection options={activityOptions} placeholder='Activity' value={value} onChange={this.handleSelectionChange} />

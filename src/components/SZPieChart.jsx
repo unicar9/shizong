@@ -1,21 +1,7 @@
 import React, { Component } from 'react'
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-
-const RADIAN = Math.PI / 180;
-
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
- 	const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x  = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy  + radius * Math.sin(-midAngle * RADIAN);
- 
-  return (
-    <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
-    	{`${(percent * 100).toFixed(0)}%`}
-    </text>
-  );
-}
+const COLORS = ['#CA3B33', '#F3BE43', '#4FB2AC', '#5C3EC2']
 
 class SZPieChart extends Component {
   
@@ -24,18 +10,19 @@ class SZPieChart extends Component {
     const data = [
       { name: "Reading", value: 500 },
       { name: "Workout", value: 300 },
-      { name: "Study", value: 200 }
+      { name: "Study", value: 200 },
+      { name: "Meditation", value: 200 }
     ]
 
     return (
-      <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
+      <PieChart width={1000} height={1000} onMouseEnter={this.onPieEnter}>
         <Pie 
           data={data}
           cx={300}
-          cy={200}
+          cy={300}
           labelLine={false}
           label
-          outerRadius={80}
+          outerRadius={200}
           fill="#8884d8"
         >
          {
@@ -45,10 +32,7 @@ class SZPieChart extends Component {
         <Tooltip  />
       </PieChart>
     )
-
   }
-
-
 }
 
 export default SZPieChart
