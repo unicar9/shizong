@@ -41,9 +41,9 @@ class SZPieChart extends Component {
          {
            data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
          }
-         </Pie>
-         <Tooltip  />
-        </PieChart>
+        </Pie>
+        <Tooltip  />
+      </PieChart>
     )
 
   }
