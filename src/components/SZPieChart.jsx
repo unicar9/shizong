@@ -34,7 +34,7 @@ class SZPieChart extends Component {
           cx={300}
           cy={200}
           labelLine={false}
-          label={renderCustomizedLabel}
+          label
           outerRadius={80}
           fill="#8884d8"
         >
