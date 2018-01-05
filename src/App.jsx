@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Container } from 'semantic-ui-react'
+import { Grid, Container, textAlign } from 'semantic-ui-react'
 import SZCard from "./components/SZCard"
 import SZPieChart from "./components/SZPieChart"
 
@@ -16,21 +16,22 @@ class App extends Component {
     
     render() {
         return (
-            <Grid>
-            <Grid.Row columns={1}>
-                <Grid.Column>
-                    <h2>Log Your Activity Today</h2>
-                    <h5>{getDate()}</h5>
-                </Grid.Column>
-            </Grid.Row>
-            <Grid.Row columns={2}>
-                <Grid.Column>
-                    <SZCard/>  
-                </Grid.Column>
-                <Grid.Column>
-                    <SZPieChart/>
-                </Grid.Column>
-            </Grid.Row>
+            <Grid verticalAlign='middle'>
+                <Grid.Row textAlign='center' columns={1}>
+                    <Grid.Column>
+                        <h2>Shi Zong</h2>
+                        <h5>{getDate()}</h5>
+                    </Grid.Column>
+                </Grid.Row>
+
+                <Grid.Row>
+                    <Grid.Column width={8}>
+                        <SZCard/>  
+                    </Grid.Column>
+                    <Grid.Column width={8}>
+                        <SZPieChart/>
+                    </Grid.Column>
+                </Grid.Row>
             </Grid>
         )
     }

@@ -51,7 +51,7 @@ class SZCard extends Component {
                         <Form.Input placeholder='Minute' value={minute} onChange={(event) => this.handleChange(event, "minute")}/>
                     </Form.Group>
                     
-                    <Form.Field control={Button} basic color='green'>OK</Form.Field>
+                    <Form.Field control={Button} color='white'>OK</Form.Field>
                 </Form>
             </Segment>
         )

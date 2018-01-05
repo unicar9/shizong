@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { PieChart, Pie, Cell, Tooltip } from 'recharts'
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 
 const COLORS = ['#CA3B33', '#F3BE43', '#4FB2AC', '#5C3EC2', 'grey']
 
@@ -17,23 +17,23 @@ class SZPieChart extends Component {
     ]
 
     return (
-      <PieChart width={1000} height={1000} onMouseEnter={this.onPieEnter}>
-        <Pie 
-          data={data}
-          cx={300}
-          cy={300}
-          labelLine={true}
-          label
-          innerRadius={80}
-          outerRadius={200}
-          fill="grey"
-        >
-         {
-           data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
-         }
-        </Pie>
-        <Tooltip  />
-      </PieChart>
+        <PieChart width={1000} height={1000} onMouseEnter={this.onPieEnter}>
+          <Pie 
+            data={data}
+            cx={300}
+            cy={300}
+            labelLine={true}
+            label
+            innerRadius={80}
+            outerRadius={200}
+            fill="grey"
+          >
+          {
+            data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
+          }
+          </Pie>
+          <Tooltip  />
+        </PieChart>
     )
   }
 }
