@@ -28,12 +28,8 @@ class App extends Component {
     constructor(props) {
         super(props)
 
-        this.showFixedHeader = this
-            .showFixedHeader
-            .bind(this)
-        this.hideFixedHeader = this
-            .hideFixedHeader
-            .bind(this)
+        this.showFixedHeader = this.showFixedHeader.bind(this)
+        this.hideFixedHeader = this.hideFixedHeader.bind(this)
 
         this.state = {}
     }
