@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 
-const COLORS = ['#CA3B33', '#F3BE43', '#4FB2AC', '#5C3EC2']
+const COLORS = ['#CA3B33', '#F3BE43', '#4FB2AC', '#5C3EC2', 'grey']
+
 
 class SZPieChart extends Component {
   
   state = {  }
   render(){
     const data = [
-      { name: "Reading", value: 500 },
-      { name: "Workout", value: 300 },
-      { name: "Study", value: 200 },
-      { name: "Meditation", value: 200 }
+      { name: "Reading", value: 3.5 },
+      { name: "Workout", value: 2.0 },
+      { name: "Study", value: 1.8 },
+      { name: "Meditation", value: 4.5 },
+      { name: "Rest", value: 12.2 }
     ]
 
     return (
@@ -20,10 +22,11 @@ class SZPieChart extends Component {
           data={data}
           cx={300}
           cy={300}
-          labelLine={false}
+          labelLine={true}
           label
+          innerRadius={80}
           outerRadius={200}
-          fill="#8884d8"
+          fill="grey"
         >
          {
            data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
