@@ -1,5 +1,17 @@
-import React, { Component } from 'react'
-import { Grid, Container, textAlign } from 'semantic-ui-react'
+import React, {Component} from 'react'
+import {
+    Button,
+    Container,
+    Divider,
+    Grid,
+    Header,
+    Icon,
+    Image,
+    List,
+    Menu,
+    Segment,
+    Visibility
+} from 'semantic-ui-react'
 import SZCard from "./components/SZCard"
 import SZPieChart from "./components/SZPieChart"
 
@@ -13,26 +25,88 @@ const getDate = () => {
 }
 
 class App extends Component {
-    
-    render() {
-        return (
-            <Grid verticalAlign='middle'>
-                <Grid.Row textAlign='center' columns={1}>
-                    <Grid.Column>
-                        <h2>Shi Zong</h2>
-                        <h5>{getDate()}</h5>
-                    </Grid.Column>
-                </Grid.Row>
+    constructor(props) {
+        super(props)
 
-                <Grid.Row>
-                    <Grid.Column width={8}>
-                        <SZCard/>  
-                    </Grid.Column>
-                    <Grid.Column width={8}>
-                        <SZPieChart/>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+        this.showFixedHeader = this
+            .showFixedHeader
+            .bind(this)
+        this.hideFixedHeader = this
+            .hideFixedHeader
+            .bind(this)
+
+        this.state = {}
+    }
+
+    showFixedHeader() {
+        this.setState({visible: true})
+    }
+
+    hideFixedHeader() {
+        this.setState({visible: false})
+    }
+
+    render() {
+        const {visible} = this.state
+        return (
+            <div>
+                {visible
+                    ? <Menu fixed='top'>Hello</Menu>
+                    : null}
+
+                <Visibility
+                    onBottomPassed={this.showFixedHeader}
+                    onBottomVisible={this.hideFixedHeader}
+                    once={false}>
+                    <Segment
+                        color='teal'
+                        inverted
+                        textAlign='center'
+                        style={{
+                        minHeight: 600,
+                        padding: '1em 0em'
+                    }}
+                        vertical>
+                        <Container text>
+                            <Header
+                                as='h1'
+                                content='SHI ZONG'
+                                inverted
+                                style={{
+                                fontSize: '4em',
+                                fontWeight: 'normal',
+                                marginBottom: 0,
+                                marginTop: '3em'
+                            }}/>
+                            <Header
+                                as='h2'
+                                content='Track Your Activities Today'
+                                inverted
+                                style={{
+                                fontSize: '1.7em',
+                                fontWeight: 'normal'
+                            }}/>
+                        </Container>
+                    </Segment>
+                </Visibility>
+
+                <Segment
+                    style={{
+                    padding: '8em 0em'
+                }}
+                    vertical>
+                    <Grid container stackable verticalAlign='middle'>
+                        <Grid.Row>
+                            <Grid.Column width={8}>
+                                <SZCard/>
+                            </Grid.Column>
+                            <Grid.Column floated='right' width={8}>
+                                <SZPieChart/>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Segment>
+            </div>
         )
     }
 }
