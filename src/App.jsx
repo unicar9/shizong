@@ -63,7 +63,7 @@ class App extends Component {
                         inverted
                         textAlign='center'
                         style={{
-                        minHeight: 600,
+                        minHeight: 500,
                         padding: '1em 0em'
                     }}
                         vertical>
@@ -91,11 +91,9 @@ class App extends Component {
                 </Visibility>
 
                 <Segment
-                    style={{
-                    padding: '8em 0em'
-                }}
+                    style={{ padding: '3em 3em' }}
                     vertical>
-                    <Grid container stackable verticalAlign='middle'>
+                    <Grid stackable verticalAlign='middle'>
                         <Grid.Row>
                             <Grid.Column width={8}>
                                 <SZCard/>

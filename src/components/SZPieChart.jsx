@@ -17,15 +17,15 @@ class SZPieChart extends Component {
     ]
 
     return (
-        <PieChart width={1000} height={1000} onMouseEnter={this.onPieEnter}>
+        <PieChart width={500} height={500} onMouseEnter={this.onPieEnter}>
           <Pie 
             data={data}
-            cx={300}
-            cy={300}
+            cx={200}
+            cy={200}
             labelLine={true}
             label
-            innerRadius={80}
-            outerRadius={200}
+            innerRadius={50}
+            outerRadius={150}
             fill="grey"
           >
           {
