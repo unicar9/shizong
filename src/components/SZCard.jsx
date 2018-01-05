@@ -34,7 +34,7 @@ class SZCard extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
+        event.preventDefault()
     }
     
     render(){

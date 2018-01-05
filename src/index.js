@@ -5,5 +5,5 @@ import registerServiceWorker from './registerServiceWorker'
 import SZCard from '../src/components/SZCard'
 import SZPieChart from '../src/components/SZPieChart'
 
-ReactDOM.render(<SZPieChart />, document.getElementById('root'))
+ReactDOM.render(<SZCard />, document.getElementById('root'))
 registerServiceWorker();
