@@ -29,21 +29,29 @@ class App extends Component {
         super(props)
 
         this.showFixedHeader = this.showFixedHeader.bind(this)
-        this.hideFixedHeader = this.hideFixedHeader.bind(this)
+        // this.hideFixedHeader = this.hideFixedHeader.bind(this)
+        this.handleUpdate = this.handleUpdate.bind(this)
 
-        this.state = {}
+        this.state = {
+            calculations: {
+              percentagePassed: 0,
+              bottomPassed: false
+            },
+        }
     }
 
     showFixedHeader() {
         this.setState({visible: true})
     }
 
-    hideFixedHeader() {
-        this.setState({visible: false})
+    handleUpdate(e, { calculations }) {
+       this.setState({ calculations })
+       this.state.calculations.percentagePassed > 0.4 && this.setState({visible: true})
+       !this.state.calculations.bottomPassed && this.state.calculations.percentagePassed < 0.4 && this.setState({visible: false})
     }
 
     render() {
-        const { visible } = this.state
+        const { visible, calculations } = this.state
         return (
             <div>
                 {visible
@@ -51,8 +59,8 @@ class App extends Component {
                     : null}
 
                 <Visibility
+                    onUpdate={this.handleUpdate}
                     onBottomPassed={this.showFixedHeader}
-                    onBottomVisible={this.hideFixedHeader}
                     once={false}>
                     <Segment
                         color='teal'
