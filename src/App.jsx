@@ -43,7 +43,7 @@ class App extends Component {
     }
 
     render() {
-        const {visible} = this.state
+        const { visible } = this.state
         return (
             <div>
                 {visible
