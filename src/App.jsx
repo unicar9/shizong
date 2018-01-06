@@ -59,7 +59,7 @@ class App extends Component {
                         inverted
                         textAlign='center'
                         style={{
-                        minHeight: 500,
+                        minHeight: 700,
                         padding: '1em 0em'
                     }}
                         vertical>
@@ -95,10 +95,32 @@ class App extends Component {
                                 <SZCard/>
                             </Grid.Column>
                             <Grid.Column floated='right' width={8}>
-                                <SZPieChart/>
+                                <SZPieChart style={{margin: "0 auto"}}/>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
+                </Segment>
+
+
+                <Segment
+                    color='teal'
+                    inverted
+                    textAlign='center'
+                    style={{
+                    minHeight: 200,
+                    padding: '1em 0em'
+                    }}
+                    vertical
+                >
+                      <Header
+                        as='h2'
+                        content='How are you hahahahah'
+                        inverted
+                        style={{
+                        fontSize: '1.7em',
+                        fontWeight: 'normal'
+                    }}/>
+
                 </Segment>
             </div>
         )
