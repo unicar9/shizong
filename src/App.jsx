@@ -29,14 +29,18 @@ class App extends Component {
         super(props)
 
         this.showFixedHeader = this.showFixedHeader.bind(this)
-        // this.hideFixedHeader = this.hideFixedHeader.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
+        this.onHandleChange = this.onHandleChange.bind(this)
+        this.onHandleSelectionChange = this.onHandleSelectionChange.bind(this)
 
         this.state = {
             calculations: {
               percentagePassed: 0,
               bottomPassed: false
             },
+            value: '',
+            hour: '',
+            minute: ''  
         }
     }
 
@@ -50,8 +54,21 @@ class App extends Component {
        !this.state.calculations.bottomPassed && this.state.calculations.percentagePassed < 0.4 && this.setState({visible: false})
     }
 
+    onHandleChange(e, name) {
+        this.setState({
+            [name]: e.target.value
+        })
+    }
+
+    onHandleSelectionChange(e, {value}) {
+        this.setState({value})
+    }
+
     render() {
-        const { visible, calculations } = this.state
+        const { visible, calculations, value, hour, minute } = this.state
+
+        
+
         return (
             <div>
                 {visible
@@ -100,8 +117,15 @@ class App extends Component {
                     <Grid stackable verticalAlign='middle'>
                         <Grid.Row>
                             <Grid.Column width={8}>
-                                <SZCard/>
+                                <SZCard 
+                                    value={value} 
+                                    hour={hour} 
+                                    minute={minute}
+                                    onHandleChange={this.onHandleChange}
+                                    onHandleSelectionChange={this.onHandleSelectionChange}
+                                />
                             </Grid.Column>
+
                             <Grid.Column floated='right' width={8}>
                                 <SZPieChart style={{margin: "0 auto"}}/>
                             </Grid.Column>

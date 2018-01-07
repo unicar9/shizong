@@ -14,23 +14,15 @@ class SZCard extends Component {
     
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleSelectionChange = this.handleSelectionChange.bind(this)
-
-        this.state = {
-            value: '',
-            hour: '',
-            minute: ''
-        }    
+        this.handleSelectionChange = this.handleSelectionChange.bind(this) 
     }
 
-    handleChange(event, name) {
-        this.setState({
-            [name]: event.target.value
-        })
+    handleChange() {
+        this.props.onHandleChange
     }
 
-    handleSelectionChange(event, { value }) {
-        this.setState({ value })
+    handleSelectionChange() {
+        this.props.onHandleSelectionChange
     }
 
     handleSubmit(event) {
@@ -38,7 +30,7 @@ class SZCard extends Component {
     }
     
     render(){
-        const { value, hour, minute } = this.state
+        const { value, hour, minute } = this.props
 
         return(
             <Segment inverted color='olive'>
