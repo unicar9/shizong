@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Button, Header, Form, Segment } from 'semantic-ui-react'
 
 const activityOptions = [
-    { key: 1, text: "Reading", value: "reading" },
-    { key: 2, text: "Workout", value: "workout" },
-    { key: 3, text: "Study", value: "study" },
-    { key: 4, text: "Meditation", value: "meditation" },
+    { text: "Reading", value: "reading" },
+    { text: "Workout", value: "workout" },
+    { text: "Study", value: "study" },
+    { text: "Meditation", value: "meditation" }
 ]
 
 class SZCard extends Component {
@@ -13,30 +13,20 @@ class SZCard extends Component {
         super(props)
     
         this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleSelectionChange = this.handleSelectionChange.bind(this) 
     }
 
-    handleChange() {
-        this.props.onHandleChange
+    handleChange(e, name) {
+        this.props.onHandleChange(e, name)
     }
 
-    handleSelectionChange() {
-        this.props.onHandleSelectionChange
-    }
-
-    handleSubmit(event) {
-        event.preventDefault()
-    }
-    
     render(){
-        const { value, hour, minute } = this.props
+        const { value, hour, minute, color } = this.props
 
         return(
-            <Segment inverted color='olive'>
+            <Segment inverted color={color}>
                 <Header as="h2" textAlign="center">Log Your Activity</Header>
-                <Form onSubmit={this.handleSubmit} size="large">
-                    <Form.Dropdown selection options={activityOptions} placeholder='Activity' value={value} onChange={this.handleSelectionChange} />
+                <Form onSubmit={this.props.handleSubmit} size="large">
+                    <Form.Dropdown selection selectonBlur={false} options={activityOptions} placeholder='Activity' value={value} onChange={this.props.handleSelectionChange} />
                     
                     <Form.Group widths='equal'>
                         <Form.Input placeholder='Hour' value={hour} onChange={(event) => this.handleChange(event, "hour")}/>

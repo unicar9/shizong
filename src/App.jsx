@@ -24,6 +24,8 @@ const getDate = () => {
     return `${day}/${month}/${year}`
 }
 
+let color = 'grey'
+
 class App extends Component {
     constructor(props) {
         super(props)
@@ -31,7 +33,8 @@ class App extends Component {
         this.showFixedHeader = this.showFixedHeader.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
         this.onHandleChange = this.onHandleChange.bind(this)
-        this.onHandleSelectionChange = this.onHandleSelectionChange.bind(this)
+        this.handleSelectionChange = this.handleSelectionChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
 
         this.state = {
             calculations: {
@@ -58,17 +61,42 @@ class App extends Component {
         this.setState({
             [name]: e.target.value
         })
+
+        console.log('====================================')
+        console.log(this.state.hour, this.state.minute)
+        console.log('====================================')
     }
 
-    onHandleSelectionChange(e, {value}) {
+    handleSelectionChange(e, {value}) {
         this.setState({value})
+
+        console.log('====================================')
+        console.log(this.state.value)
+        console.log('====================================')
+
+        // if (this.state.value === 'reading') {
+        //     color = 'yellow'
+        // } 
+        // if (this.state.value === 'workout') {
+        //     color = 'teal'
+        // } 
+        // if (this.state.value === 'study') {
+        //     color = 'red'
+        // } 
+        // if (this.state.value === 'meditation') {
+        //     color = 'violet'
+        // } 
+
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
     }
 
     render() {
         const { visible, calculations, value, hour, minute } = this.state
 
-        
-
+     
         return (
             <div>
                 {visible
@@ -122,7 +150,9 @@ class App extends Component {
                                     hour={hour} 
                                     minute={minute}
                                     onHandleChange={this.onHandleChange}
-                                    onHandleSelectionChange={this.onHandleSelectionChange}
+                                    handleSelectionChange={this.handleSelectionChange}
+                                    color={color}
+                                    handleSubmit={this.handleSubmit}
                                 />
                             </Grid.Column>
 
