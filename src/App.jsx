@@ -14,6 +14,7 @@ import {
 } from 'semantic-ui-react'
 import SZCard from "./components/SZCard"
 import SZPieChart from "./components/SZPieChart"
+import { Cell } from 'recharts'
 
 const getDate = () => {
     let today = new Date()
@@ -25,6 +26,8 @@ const getDate = () => {
 }
 
 let color = 'grey'
+
+const COLORS = ['#CA3B33', '#F3BE43', '#4FB2AC', '#5C3EC2', 'grey']
 
 class App extends Component {
     constructor(props) {
@@ -43,7 +46,8 @@ class App extends Component {
             },
             value: '',
             hour: '',
-            minute: ''  
+            minute: '',
+            data: [{name: 'rest', value: 24}]  
         }
     }
 
@@ -91,10 +95,26 @@ class App extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
+        console.log('====================================')
+        console.log(this.state.hour, this.state.minute, this.state.value)
+        console.log('====================================')
+
+        this.state.data.push({ name: this.state.value, value: Number(this.state.hour) + Number(this.state.minute/60) })
+        console.log('====================================')
+        console.log(this.state.data)
+        console.log('====================================')
     }
 
     render() {
-        const { visible, calculations, value, hour, minute } = this.state
+        const { visible, calculations, value, hour, minute, data } = this.state
+
+        // const data = [
+        //     //   { name: "Reading", value: 3.5 },
+        //     //   { name: "Workout", value: 2.0 },
+        //     //   { name: "Study", value: 1.8 },
+        //     //   { name: "Meditation", value: 4.5 },
+        //     //   { name: "Rest", value: 12.2 }
+        //     // ]
 
      
         return (
@@ -157,7 +177,14 @@ class App extends Component {
                             </Grid.Column>
 
                             <Grid.Column floated='right' width={8}>
-                                <SZPieChart style={{margin: "0 auto"}}/>
+                                <SZPieChart
+                                    data={data}
+                                    style={{margin: "0 auto"}}
+                                >
+                                  {
+                                    this.state.data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
+                                  }
+                                </SZPieChart>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
